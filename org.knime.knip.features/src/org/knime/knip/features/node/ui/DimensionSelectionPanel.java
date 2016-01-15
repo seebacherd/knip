@@ -46,14 +46,14 @@
  *
  */package org.knime.knip.features.node.ui;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import org.knime.knip.base.node.dialog.DialogComponentDimSelection;
-
-import net.miginfocom.layout.AC;
-import net.miginfocom.layout.LC;
-import net.miginfocom.swing.MigLayout;
+import org.knime.knip.features.node.model.SettingsModelFeatureSet;
 
 public class DimensionSelectionPanel extends JPanel {
 
@@ -62,12 +62,14 @@ public class DimensionSelectionPanel extends JPanel {
 	 */
 	private static final long serialVersionUID = -2266205228449833796L;
 
-	public DimensionSelectionPanel(DialogComponentDimSelection dimSelection) {
+	public DimensionSelectionPanel(final DialogComponentDimSelection dimSelection) {
 
 		this.setBorder(BorderFactory.createTitledBorder("Dimension Selection:"));
-		this.setLayout(new MigLayout(new LC().wrapAfter(1), new AC().fill().grow()));
-
-		this.add(dimSelection.getComponentPanel());
+		this.setLayout(new GridBagLayout());
+		
+		final GridBagConstraints gbc = SettingsModelFeatureSet.getNewDefaultGridBagConstraints();
+		
+		this.add(dimSelection.getComponentPanel(), gbc);
 	}
 
 }
