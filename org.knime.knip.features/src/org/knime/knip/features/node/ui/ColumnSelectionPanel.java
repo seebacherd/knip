@@ -56,6 +56,7 @@ import javax.swing.JPanel;
 
 import org.knime.core.node.defaultnodesettings.DialogComponentColumnNameSelection;
 import org.knime.core.node.defaultnodesettings.DialogComponentStringSelection;
+import org.knime.knip.features.node.model.SettingsModelFeatureSet;
 
 public class ColumnSelectionPanel extends JPanel {
 
@@ -71,16 +72,7 @@ public class ColumnSelectionPanel extends JPanel {
 		this.setBorder(BorderFactory.createTitledBorder("Column Selection:"));
 		this.setLayout(new GridBagLayout());
 
-		final GridBagConstraints gbc = new GridBagConstraints();
-		
-		gbc.fill = GridBagConstraints.HORIZONTAL;
-		gbc.anchor = GridBagConstraints.LINE_START;
-		gbc.weightx = 1;
-		gbc.weighty = 0;
-		gbc.insets = new Insets(2, 2, 2, 2);
-		gbc.gridheight = 1;
-		gbc.gridx = 0;
-		gbc.gridy = 0;
+		final GridBagConstraints gbc = SettingsModelFeatureSet.getNewDefaultGridBagConstraints();
 		
 		this.add(imgColumnComponent.getComponentPanel(), gbc);
 		
