@@ -222,6 +222,7 @@ public class FeatureCalculatorDialogPane<T extends RealType<T> & NativeType<T>, 
 		this.appendLabelsOfOverlappingSegments.saveSettingsTo(settings);
 		this.intersectionModeComponent.saveSettingsTo(settings);
 		this.includeLabelsComponent.saveSettingsTo(settings);
+		this.filterOverlappingLabelsComponent.saveSettingsTo(settings);
 
 		this.appendSegmentInformationComponent.saveSettingsTo(settings);
 
@@ -239,6 +240,7 @@ public class FeatureCalculatorDialogPane<T extends RealType<T> & NativeType<T>, 
 		this.appendLabelsOfOverlappingSegments.loadSettingsFrom(settings, specs);
 		this.intersectionModeComponent.loadSettingsFrom(settings, specs);
 		this.includeLabelsComponent.loadSettingsFrom(settings, specs);
+		this.filterOverlappingLabelsComponent.loadSettingsFrom(settings, specs);
 		this.appendSegmentInformationComponent.loadSettingsFrom(settings, specs);
 
 		try {
