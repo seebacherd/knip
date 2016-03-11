@@ -48,6 +48,7 @@
  */
 package org.knime.knip.base.nodes.view;
 
+import org.knime.cellviewer.core.CellViewNodeView;
 import org.knime.core.node.DynamicNodeFactory;
 import org.knime.core.node.NodeDescription;
 import org.knime.core.node.NodeDescription210Proxy;
@@ -102,7 +103,7 @@ public class TableCellViewNodeFactory extends DynamicNodeFactory<TableCellViewNo
      */
     @Override
     public NodeView<TableCellViewNodeModel> createNodeView(final int viewIndex, final TableCellViewNodeModel nodeModel) {
-        return new TableCellViewNodeView<>(nodeModel);
+        return new CellViewNodeView<>(nodeModel);
     }
 
     /**

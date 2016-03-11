@@ -10,7 +10,6 @@ Require-Bundle: org.knime.base;bundle-version="[3.0.0,4.0.0)",
  org.eclipse.core.runtime;bundle-version="3.6.0",
  org.eclipse.ui;bundle-version="3.6.0",
  imglib2;bundle-version="2.3.0",
- org.knime.knip.core;bundle-version="[1.4.0,1.5.0)",
  imagej-common;bundle-version="0.12.0",
  imglib2-algorithm-gpl,
  scijava-common;bundle-version="2.36.0",
@@ -24,9 +23,10 @@ Require-Bundle: org.knime.base;bundle-version="[3.0.0,4.0.0)",
  slf4j-api;bundle-version="1.7.10",
  imglib2-roi;bundle-version="0.3.2",
  imagej-ops;bundle-version="0.16.0",
- org.knime.core,
  knip-tmp-imglib2-ops;bundle-version="0.4.0",
- commons-math3;bundle-version="3.5.0"
+ commons-math3;bundle-version="3.5.0",
+ org.knime.knip.tablecellviewer,
+ org.knime.knip.core;bundle-version="1.4.2"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: knip-base.jar
 Bundle-ActivationPolicy: lazy
@@ -102,4 +102,5 @@ Export-Package: org.knime.knip.base,
  org.knime.knip.base.nodes.view.segmentoverlay,
  org.knime.knip.base.prefs,
  org.knime.knip.base.renderer
+Import-Package: org.knime.cellviewer.core
 

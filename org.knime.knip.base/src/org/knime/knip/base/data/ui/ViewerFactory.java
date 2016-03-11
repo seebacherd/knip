@@ -48,6 +48,8 @@
  */
 package org.knime.knip.base.data.ui;
 
+import org.knime.cellviewer.core.interfaces.CellView;
+import org.knime.knip.base.nodes.view.ImgViewer2;
 import org.knime.knip.core.ui.imgviewer.CombinedImgViewer;
 import org.knime.knip.core.ui.imgviewer.ExpandingPanel;
 import org.knime.knip.core.ui.imgviewer.ImgCanvas;
@@ -135,6 +137,50 @@ public class ViewerFactory {
 
         return viewer;
 
+    }
+
+    public static <T extends RealType<T> & NativeType<T>> CellView createImgViewer2(final int cacheSize) {
+
+        final ImgViewer2 viewer = new ImgViewer2();
+
+        final AWTImageProvider realProvider = new AWTImageProvider(cacheSize, new ImageRU<T>());
+        realProvider.setEventService(viewer.getEventService());
+
+        viewer.addViewerComponent(new ImgViewInfoPanel<T>());
+        viewer.addViewerComponent(new ImgCanvas<T, Img<T>>());
+
+        viewer.addViewerComponent(ViewerComponents.MINIMAP_PLANE_SELECTION.createInstance());
+        viewer.addViewerComponent(new ExpandingPanel("Image Enhancement",
+                ViewerComponents.IMAGE_ENHANCE.createInstance(), true));
+        viewer.addViewerComponent(new ExpandingPanel("Renderer Selection",
+                ViewerComponents.RENDERER_SELECTION.createInstance(), true));
+        viewer.addViewerComponent(new ExpandingPanel("Image Properties",
+                ViewerComponents.IMAGE_PROPERTIES.createInstance()));
+
+        viewer.doneAdding();
+
+        return viewer;
+
+    }
+
+    public static <T extends RealType<T>> CellView createHistViewer2(final int cacheSize) {
+        final ImgViewer2 viewer = new ImgViewer2();
+
+        final AWTImageProvider histProvider = new AWTImageProvider(cacheSize, new HistogramRU<T>(512));
+        histProvider.setEventService(viewer.getEventService());
+
+        viewer.addViewerComponent(histProvider);
+
+        viewer.addViewerComponent(new HistogramViewInfoPanel<T, Img<T>>());
+        viewer.addViewerComponent(new ImgCanvas<T, Img<T>>());
+
+        viewer.addViewerComponent(ViewerComponents.MINIMAP_PLANE_SELECTION.createInstance());
+        viewer.addViewerComponent(new ExpandingPanel("Image Properties",
+                ViewerComponents.IMAGE_PROPERTIES.createInstance()));
+
+        viewer.doneAdding();
+
+        return viewer;
     }
 
     /**

@@ -288,4 +288,15 @@
            </renderer>
         </dataValue>
      </extension>
+     <extension
+           point="org.knime.cellviewer.cellviews">
+        <CellView
+              CellViewProviderFactory="org.knime.knip.base.nodes.view.ImgViewProviderFactory"
+              id="org.knime.knip.base.CellView2">
+        </CellView>
+        <CellView
+              CellViewProviderFactory="org.knime.knip.base.nodes.view.TestImgViewProviderFactory"
+              id="org.knime.knip.base.CellView3">
+        </CellView>
+     </extension>
 </plugin>
